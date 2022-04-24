@@ -1,0 +1,139 @@
+﻿<Window x:Class="MergeSort.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        ResizeMode ="CanMinimize"
+        xmlns:local="clr-namespace:MergeSort"
+        mc:Ignorable="d"
+        Title="Merge Sort" Height="auto" Width="auto"
+        Background="#FF154EA0"
+        SizeToContent="WidthAndHeight">
+    <Grid x:Name="ResultTextBox" RenderTransformOrigin="0.49,0.507" Height="550" Width="850">
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FFDCF0FA" Offset="0.992"/>
+                <GradientStop Color="#FFCBCCDC" Offset="0"/>
+                <GradientStop Color="#FF9295BF" Offset="0"/>
+                <GradientStop Color="#FF547199" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label Content="Wybierz język:" HorizontalAlignment="Center" Margin="0,253,0,0" VerticalAlignment="Top" Width="232" FontSize="18" HorizontalContentAlignment="Center" Height="36"/>
+        <Label Content="Posortowany ciąg:" HorizontalAlignment="Left" Margin="627,252,0,0" VerticalAlignment="Top" Width="176" FontSize="18" Height="38"/>
+        <Label Content="Sortowanie przez scalanie (Merge Sort)" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Width="542" FontSize="28" FontWeight="Bold" FontStyle="Normal" HorizontalContentAlignment="Center" Height="68"/>
+        <Label Content="Ciąg do posortowania:" HorizontalAlignment="Left" Margin="5,253,0,0" VerticalAlignment="Top" Width="286" FontSize="18" HorizontalContentAlignment="Center" Height="40"/>
+        <Label Content="Asembler:" HorizontalAlignment="Left" Margin="103,459,0,0" VerticalAlignment="Top" Width="92" FontSize="18" Height="37"/>
+        <TextBox x:Name="NumbersToSortTextBox" HorizontalAlignment="Left" Margin="15,288,0,0" TextWrapping="Wrap" Background="White"  BorderBrush="#FF231F69" Width="268" Height="122" VerticalAlignment="Top"/>
+        <StackPanel Margin="387,304,378,190">
+            <RadioButton x:Name="AsmCheckBox" Content="Asembler" Width="88" Height="19" HorizontalAlignment="Left"/>
+            <RadioButton x:Name="CppCheckBox" Content="C++" Width="59" HorizontalAlignment="Left" Height="19"/>
+            <RadioButton x:Name="BothCheckBox" Content="Oba" Width="59" HorizontalAlignment="Left" Height="19"/>
+
+        </StackPanel>
+        <StackPanel Margin="140,125,112,324">
+            <RadioButton x:Name="WindowCheckBox" Content="Okno aplikacji" HorizontalAlignment="Center"  Width="97" Height="19" Checked="WindowChecked"/>
+            <RadioButton x:Name="FileCheckBox" Content="Plik" Width="98" Height="29" HorizontalAlignment="Center" Checked="FileChecked" />
+            <Button x:Name="InputFileButton"  BorderBrush="#FF231F69" Content="Wybierz plik wejściowy" Height="26" Width ="144" Padding="0" Click="InputFileButtonClick" HorizontalAlignment="Left">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFCAE7FF"/>
+                        <GradientStop Color="#FF86B0D3" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="OutputFileButton"  BorderBrush="#FF231F69" Content="Wybierz plik wyjściowy" Height="27" Width ="144" Padding="0" Click="OutputFileButtonClick" HorizontalAlignment="Left" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFCAE7FF"/>
+                        <GradientStop Color="#FF86B0D3" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+        </StackPanel>
+        <Button x:Name="SortButton" Content="Sortuj" HorizontalAlignment="Left" Margin="374,374,0,0" VerticalAlignment="Top" Height="36" Width="96"  BorderBrush="#FF231F69" Click="SortButtonClick" FontSize="18" FontWeight="Normal" RenderTransformOrigin="0.738,0.529">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFCAE7FF"/>
+                    <GradientStop Color="#FF86B0D3" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="SortedNumbersTextBox" HorizontalAlignment="Left" IsReadOnly="True" BorderBrush="#FF231F69" Margin="570,288,0,0" TextWrapping="Wrap" Width="266" Height="122" VerticalAlignment="Top"/>
+        <Label Content="Wybierz sposób podawania oraz zapisu danych" HorizontalAlignment="Left" Margin="211,88,0,0" VerticalAlignment="Top" Width="454" FontSize="18" HorizontalContentAlignment="Center" Height="37"/>
+        <Separator HorizontalAlignment="Center" Margin="0,226,0,0" VerticalAlignment="Top" Height="29" RenderTransformOrigin="0.501,0.819" Width="850" Background="#FF332C71">
+            <Separator.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Separator.OpacityMask>
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-18.502"/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <Separator HorizontalAlignment="Center" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.5,0.5" Width="850" Background="#FF332C71" Margin="0,60,0,0">
+            <Separator.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Separator.OpacityMask>
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <Separator HorizontalAlignment="Center" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.5,0.5" Width="850" Background="#FF332C71" Margin="0,415,0,0">
+            <Separator.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Separator.OpacityMask>
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+
+        <Separator HorizontalAlignment="Left" Margin="-3,0,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.5,0.5" Width="850" Background="#FF332C71">
+            <Separator.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Separator.OpacityMask>
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <Label Content="C++:" HorizontalAlignment="Left" Margin="662,458,0,0" VerticalAlignment="Top" Width="60" FontSize="18" Height="38" RenderTransformOrigin="0.26,0.591"/>
+        <Label x:Name="InputFileLabel" Content="Ścieżka do pliku wejściowego" HorizontalAlignment="Left" Margin="284,173,0,0" VerticalAlignment="Top" Width="454" Height="26" Opacity="0.5" FontStyle="Italic"  Foreground="Black" FontSize="11"/>
+        <Label x:Name="OutputFileLabel" Content="Ścieżka do pliku wyjściowego" HorizontalAlignment="Left" Margin="284,199,0,0" VerticalAlignment="Top" Width="454" Height="27" Opacity="0.5" FontStyle="Italic"  Foreground="Black" FontSize="11"/>
+        <Label Content="Czasy wykonania operacji sortowania" HorizontalAlignment="Left" Margin="272,440,0,0" VerticalAlignment="Top" Width="312" FontSize="18" Height="37"/>
+        <TextBox x:Name="AsemblerResultTextBox" IsReadOnly="True" HorizontalAlignment="Left"  Margin="61,494,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="26" Background="White" BorderBrush="#FF231F69" BorderThickness="1"  FontSize="14"/>
+        <TextBox x:Name="CppResultTextBox" IsReadOnly="True" HorizontalAlignment="Left"  Margin="604,494,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="26" Background="White" BorderBrush="#FF231F69" BorderThickness="1"  FontSize="14"/>
+
+    </Grid>
+</Window>

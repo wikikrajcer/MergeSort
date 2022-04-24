@@ -1,0 +1,2 @@
+LIBRARY MergeSortAsm
+EXPORTS MergeSortFuncAsm
